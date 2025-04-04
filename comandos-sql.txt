@@ -1,0 +1,25 @@
+create table usuario(
+
+	id uuid not null primary key,
+	nome varchar(50) not null unique,
+	data_nascimento date not null,
+	nacionalidade varchar(50) not null,
+	data_cadastro timestamp,
+	data_atualizacao timestamp
+
+);
+
+
+create table produto(
+
+	id uuid not null primary key,
+    nome varchar not null unique,
+	preco numeric(5, 2) not null,
+	data_cadastro timestamp,
+	data_publicacao date not null,
+	data_atualizacao timestamp,
+	id_usuario uuid not null references aluno(id),
+	tipo_produto varchar not null,
+	constraint chk_tipo_produto check (tipo_produto in ('HIGIENE', 'ELETRONICO'))
+
+);
