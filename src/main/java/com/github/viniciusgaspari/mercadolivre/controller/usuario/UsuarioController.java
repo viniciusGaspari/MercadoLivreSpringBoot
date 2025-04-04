@@ -127,7 +127,7 @@ public class UsuarioController {
                     .orElseThrow(() -> new OperacaoNaoPermitida("Usuario não encontrado"));
         } catch (OperacaoNaoPermitida e) {
 
-            var erro = MensagemErro.conflito(e.getMessage());
+            var erro = MensagemErro.naoEncontrado(e.getMessage());
             return ResponseEntity.status(erro.status()).body(erro);
 
             }
